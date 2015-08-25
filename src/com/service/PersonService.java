@@ -5,13 +5,15 @@ import java.util.ArrayList;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.model.Person;
+
 @Path("/user")
 public class PersonService {
 
-	@GET
+	@GET	
 	@Produces("application/json")
 	public ArrayList<Person> getPerson(){
 		ArrayList<Person>pp = new ArrayList<Person>();
@@ -39,4 +41,19 @@ public class PersonService {
 		
 		return pp;
 	}
+	
+	 @GET
+	 @Path("/search/{person}")
+	 @Produces("application/json")
+	 public Person getPerson(@PathParam("person") String person) {
+		 Person p = new Person();
+		 if(person.equalsIgnoreCase( "Chasteen")){
+			 
+			p.setName("Lane Chasteen");
+			p.setAge("34");
+			p.setDateOfBirth("08/22/1980");
+				
+		 }
+		 return p;
+	 }
 }

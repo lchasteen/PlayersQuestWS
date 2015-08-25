@@ -3,7 +3,8 @@
   <head>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    <script src="js/hello.js"></script>
+    <script src="js/person.js"></script>
+    
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css/bootstrap.min.css">
 	<!-- Optional theme -->
@@ -91,8 +92,8 @@
   <body onload="initialize()">
   
 	<h1>User Information</h1>
-    <div class="col-md-16 col-md-offset-1">
-	    <table class="table" ng-app="userApp" ng-controller="Hello">
+    <div class="col-md-16 col-md-offset-1" ng-app="userApp">
+	    <table class="table"  ng-controller="display">
 	    	<tr>
 		    	<th>Name</th>
 		    	<th>Age</th>
@@ -119,11 +120,24 @@
 	    <div class="row">
 	     	<div class="col-md-1">lng:</div><div class="col-md-4"><input id="lng"/></div>
 	    </div>
-	        <br/>
-	        <br/>
-	        lat from map: <input id="latMap" />
-	        lng from map: <input id="lngMap" />
+	    <div class="row">
+	        <div class="col-md-1">lat from map:</div><div class="col-md-4"><input id="latMap" /></div>
+	    </div>
+	    <div class="row">
+	        <div class="col-md-1">lng from map:</div><div class="col-md-4"><input id="lngMap" /></div>
+	    </div>
+	     <div class="row"  ng-controller="searchPerson">
+
+			First Name: <input type="text" ng-model="firstName"/><br>
+			Last Name: <input type="text" ng-model="lastName"/><br>
+			<br>
+			<p ng-bind="result.name"></p>
+			<button ng-click="complete()">Search</button>
+			
+			<!-- a href="#" id="gobutton" ng-click="update('movie')">Go</a -->
+
+		</div>
+	    
    </div>
-   
-  </body>
+    </body>
 </html>
