@@ -5,15 +5,15 @@
     var routeApp = angular.module('routeApp', ['ui.bootstrap','ngRoute']);
 
     // configure our routes
-    routeApp.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
-	//routeApp.config(["$routeProvider", function($routeProvider) {
+    //routeApp.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
+	routeApp.config(["$routeProvider", function($routeProvider) {
 		//$locationProvider.html5Mode(true);
         $routeProvider
 
             // route for the home page
             .when('/', {
-                templateUrl : './pages/home.html'
-            })
+                templateUrl : './././pages/home.html'
+            /*})
 			
 			// route for the resume page
             .when('/resume', {
@@ -40,20 +40,40 @@
 			
 			//.otherwise({
 			//	redirectTo: '/portfolio/'
-                
+            */    
 			});
 			
 			// use the HTML5 History API
-			$locationProvider.html5Mode(true);
+			//$locationProvider.html5Mode(true);
+			
     }]);
 	
 	
-	//var app = angular.module('myApp', []);
-	routeApp.controller('HomeController', function($scope, $http) {
-		$http.get("./data/home-data.php")
-		.success(function(response) {$scope.names = response.records;});
+	routeApp.controller("display",  ["$scope", "$http", function($scope, $http) {
+		$http.get('rest/user').success(function(data) {
+			$scope.listperson = data.person;            
+		});
+	}]);
 		
-	});
+	
+	
+	routeApp.controller('searchPerson',["$scope", "$http", function($scope, $http){
+		
+	    $scope.firstName= "John";
+	    $scope.lastName= "Chasteen";
+	    //var u = "rest/user/search/" + $scope.lastName;
+	    $scope.complete = function(){	    	
+	    	  
+	    	$http.get("rest/user/search/" + $scope.lastName).success(function(data) {
+	   			$scope.result = data;            
+	   		});	    
+	   
+	    	}
+	    
+	  
+	}]);
+	
+	
 
     // create the controller and inject Angular's $scope
     routeApp.controller('MainController', function($scope) {			

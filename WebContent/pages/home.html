@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+   <div class="col-md-16 col-md-offset-1" >
+			    <table class="table"  ng-controller="display">
+			    	<tr>
+				    	<th>Name</th>
+				    	<th>Age</th>
+				    	<th>Date of Birth</th>
+			    	</tr>		  
+			  		<tr ng-repeat="p in listperson">
+						<td>{{p.name}}</td>
+						<td>{{p.age}}</td>
+						<td>{{p.DOB}}</td>
+					</tr>
+				</table>
+				<div class="row">
+					<div id="map_canvas" onclick="mapDivClicked(event);"></div>
+				</div>
+				<div class="row">
+			       	<div class="col-md-1">x:</div><div class="col-md-4"><input id="posX"/></div>
+			    </div>
+			    <div class="row">
+			       	<div class="col-md-1">y:</div><div class="col-md-4"><input id="posY"/></div>
+			    </div>
+			    <div class="row">
+			       	<div class="col-md-1">lat:</div><div class="col-md-4"><input id="lat"/></div>
+			    </div>
+			    <div class="row">
+			     	<div class="col-md-1">lng:</div><div class="col-md-4"><input id="lng"/></div>
+			    </div>
+			    <div class="row">
+			        <div class="col-md-1">lat from map:</div><div class="col-md-4"><input id="latMap" /></div>
+			    </div>
+			    <div class="row">
+			        <div class="col-md-1">lng from map:</div><div class="col-md-4"><input id="lngMap" /></div>
+			    </div>
+			     <div class="row"  ng-controller="searchPerson">
+		
+					First Name: <input type="text" ng-model="firstName"/><br>
+					Last Name: <input type="text" ng-model="lastName"/><br>
+					<br>
+					<p ng-bind="result.name"></p>
+					<button ng-click="complete()">Search</button>
+					
+					<!-- a href="#" id="gobutton" ng-click="update('movie')">Go</a -->
+		
+				</div>
+			    
+		</div>
+		   
+</html>

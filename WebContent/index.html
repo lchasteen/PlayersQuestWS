@@ -11,6 +11,10 @@
     <meta name="description" content="Player's Quest Aventure Game Site.">
     <meta name="author" content="Lane Chasteen">
 	<title>Player's Quest</title>
+	<!--  base href="/PlayersQuestWS/" --> 
+    <link rel="icon" href="../../favicon.ico">	
+	<meta name="keywords" content="game, quest, dragon" />			
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	
   	<!-- Latest compiled and minified CSS -->
 	<link href="css/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" >
@@ -41,19 +45,23 @@
 	
 	
 	<script src="js/jquery/2.1.4/jquery-2.1.4.min.js"></script>
+	<script src="css/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
     <script src="js/AngularJS/1.4.5/angular.min.js"></script>    
     <script src="js/AngularJS/1.4.5/ui-bootstrap-tpls-0.13.4.min.js"></script>
 	<script src="js/AngularJS/1.4.5/angular-route.js"></script>
-    <script src="css/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+ 
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     
+    <script src="js/route.js"></script>
     <script src="js/map.js"></script>
-    <script src="js/person.js"></script>
+    <!--  script src="js/person.js"></script-->
+    
     
   </head>
   
   <body onload="initialize()">
   
+  	  <div ng-include="'pages/nav.html'"></div>
 	  <div class="jumbotron">
 	  	<div class="container">	  	
 	  		<img src="images/players_quest_min.gif"/>
@@ -63,55 +71,8 @@
 	  
 	  <div class="container"  ng-controller="MainController">
 	   
-	  	<div ng-view></div>
-	  	
-		    <div class="col-md-16 col-md-offset-1" ng-app="userApp">
-			    <table class="table"  ng-controller="display">
-			    	<tr>
-				    	<th>Name</th>
-				    	<th>Age</th>
-				    	<th>Date of Birth</th>
-			    	</tr>		  
-			  		<tr ng-repeat="p in listperson">
-						<td>{{p.name}}</td>
-						<td>{{p.age}}</td>
-						<td>{{p.DOB}}</td>
-					</tr>
-				</table>
-				<div class="row">
-					<div id="map_canvas" onclick="mapDivClicked(event);"></div>
-				</div>
-				<div class="row">
-			       	<div class="col-md-1">x:</div><div class="col-md-4"><input id="posX"/></div>
-			    </div>
-			    <div class="row">
-			       	<div class="col-md-1">y:</div><div class="col-md-4"><input id="posY"/></div>
-			    </div>
-			    <div class="row">
-			       	<div class="col-md-1">lat:</div><div class="col-md-4"><input id="lat"/></div>
-			    </div>
-			    <div class="row">
-			     	<div class="col-md-1">lng:</div><div class="col-md-4"><input id="lng"/></div>
-			    </div>
-			    <div class="row">
-			        <div class="col-md-1">lat from map:</div><div class="col-md-4"><input id="latMap" /></div>
-			    </div>
-			    <div class="row">
-			        <div class="col-md-1">lng from map:</div><div class="col-md-4"><input id="lngMap" /></div>
-			    </div>
-			     <div class="row"  ng-controller="searchPerson">
-		
-					First Name: <input type="text" ng-model="firstName"/><br>
-					Last Name: <input type="text" ng-model="lastName"/><br>
-					<br>
-					<p ng-bind="result.name"></p>
-					<button ng-click="complete()">Search</button>
-					
-					<!-- a href="#" id="gobutton" ng-click="update('movie')">Go</a -->
-		
-				</div>
-			    
-		   </div>
-		   </div>
-    </body>
+	  	<div ng-view>	 
+		</div>
+	  </div>
+  </body>
 </html>
