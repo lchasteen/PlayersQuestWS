@@ -1,6 +1,17 @@
 <!doctype html>
-<html>
+<html ng-app="routeApp">
   <head>
+   <meta charset="utf-8"> 
+
+
+    <!--base href="/"-->	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Player's Quest Aventure Game Site.">
+    <meta name="author" content="Lane Chasteen">
+	<title>Player's Quest</title>
+	
   	<!-- Latest compiled and minified CSS -->
 	<link href="css/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" >
 	<link href="css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
@@ -43,11 +54,17 @@
   
   <body onload="initialize()">
   
-	  <div class="container">
-	  	<h1>User Information</h1>
+	  <div class="jumbotron">
+	  	<div class="container">	  	
+	  		<img src="images/players_quest_min.gif"/>
+	  		<h1>Players Quest</h1>
+	  	</div>
 	  </div>
 	  
-	  <div class="container"> 
+	  <div class="container"  ng-controller="MainController">
+	   
+	  	<div ng-view></div>
+	  	
 		    <div class="col-md-16 col-md-offset-1" ng-app="userApp">
 			    <table class="table"  ng-controller="display">
 			    	<tr>
