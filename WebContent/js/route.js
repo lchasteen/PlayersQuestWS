@@ -2,8 +2,9 @@
 
     // create the module and name it routApp
     // also include ngRoute for all our routing needs
-    var routeApp = angular.module('routeApp', ['ui.bootstrap','ngRoute']);
-
+    var routeApp = angular.module('routeApp', ['ui.bootstrap','ngRoute','datatables','ngResource']);
+    //var routeApp = angular.module('routeApp', ['ui.bootstrap','ngRoute','smart-table']);
+    
     // configure our routes
     //routeApp.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
 	routeApp.config(["$routeProvider", function($routeProvider) {
@@ -72,6 +73,37 @@
 	    
 	  
 	}]);
+	
+	// Table Controller
+	routeApp.controller('WithAjaxCtrl', function ($http, DTOptionsBuilder, DTColumnDefBuilder) {
+	    var vm = this;
+		vm.results = [];
+	    vm.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
+	    vm.dtColumnDefs = [
+	                       DTColumnDefBuilder.newColumnDef(0),
+	                       DTColumnDefBuilder.newColumnDef(1),
+	                       DTColumnDefBuilder.newColumnDef(2)
+       ];
+	                       
+       $http.get('rest/asset/meters').success(function(data) {
+    	   vm.results = data.metering_units;            
+	   });
+	    
+	 });
+	
+	
+	routeApp.controller("asset",  ["$scope", "$http", function($scope, $http) {
+		
+		$scope.itemsByPage=20;	
+		
+		$http.get('rest/asset/meters').success(function(data) {
+			
+			$scope.result = data.metering_units;            
+		});
+	}]);
+	
+	
+	
 	
 	
 

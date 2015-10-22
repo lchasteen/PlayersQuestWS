@@ -41,7 +41,7 @@
                placeMarker(latitude, longitude);
            }
            
-           function placeMarker(latitude, longitude) {
+          function placeMarker(latitude, longitude) {
         	   
         	 
 
